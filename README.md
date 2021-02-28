@@ -23,21 +23,21 @@ The app uses the `subprocess` module for the purpose of converting data from PDF
 ## Project Interface
 There are two ways of running this project:
 
-   1. Running on the command line - `python2 meme.py`. For getting more information you 
-      could run `python meme.py --help` which will provide further explanation. 
+1. Running on the command line - `python2 meme.py`. For getting more information you 
+   could run `python meme.py --help` which will provide further explanation. 
 
-      Explanation here
+   Explanation here
 
-      sample for what to pass in the command line here
+   sample for what to pass in the command line here
 
-    Through this way, the meme will be generated in `tmp` directory. The parameters are optional. If no parameter is passed then a random meme will be generated. 
+   Through this way, the meme will be generated in `tmp` directory. The parameters are optional. If no parameter is passed then a random meme will be generated. 
 
 
-    2. Running the project in the app - `python3 app.py` and go to `the link`
+2. Running the project in the app - `python3 app.py` and go to `the link`
 
-       Sample passing command 
+   Sample passing command 
 
-       The app will use `QuoteEngine` module and `Meme Generator` module which will generate the meme with a random quote. It will use `requests` package to fetch an image which the user submits. 
+   The app will use `QuoteEngine` module and `Meme Generator` module which will generate the meme with a random quote. It will use `requests` package to fetch an image which the user submits. 
 
 ## Modules description 
 The structure of the project:
