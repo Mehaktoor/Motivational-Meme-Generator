@@ -3,7 +3,7 @@ import random
 
 # @TODO Import your Ingestor and MemeEngine classes
 
-
+#hghhhdhfdsjfjhdhwqkdhwqidgqwudgqdgwqhjgwqudgusadgewuydf
 def generate_meme(path=None, body=None, author=None):
     """ Generate a meme given an path and a quote """
     img = None
@@ -17,7 +17,7 @@ def generate_meme(path=None, body=None, author=None):
 
         img = random.choice(imgs)
     else:
-        img = path[0]
+        img = path[0]y67-[]
 
     if body is None:
         quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
