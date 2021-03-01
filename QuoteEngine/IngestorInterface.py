@@ -4,7 +4,7 @@ from typing import List
 from .QuoteModel import QuoteModel
 
 class IngestorInterface(ABC):
-    allowed_extensions = ['csv', 'docx', 'txt', 'pdf']
+    allowed_extensions = []
 
     @classmethod
     def can_ingest(cls, path: str) -> bool:

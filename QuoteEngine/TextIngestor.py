@@ -13,16 +13,11 @@ class TextIngestor(IngestorInterface):
             raise Exception('cannot ingest exception')
 
         quotes = []
-        txt_file = f'./data/SimpleLines.txt'
-        file_ref = open(txt_file, "r")
+        with open(path, "r") as i:
+            lines = i.readlines()
 
-        for line in file_ref.readlines():
-            line = line.strip('\n\r').strip()
-            if len(line) > 0:
-                parse = line.split('-')
-                new_quote = QuoteModel(parse[0], parse[1])
-                quotes.append(new_quote)
+        for row in lines:
+            quote, author = row.split('-')
+            quotes.append(QuoteModel(quote.strip(), author.strip()))
 
-        file_ref.close()
-        os.remove(txt_file)
         return quotes

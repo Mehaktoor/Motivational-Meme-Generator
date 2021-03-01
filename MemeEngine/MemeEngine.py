@@ -10,7 +10,7 @@ class MemeEngine:
         if not os.path.exists(out_path):
             os.makedirs(out_path)
 
-    def generate_meme(self, in_path, text, author, width = 500) -> str:
+    def make_meme(self, in_path, text, author, width = 500) -> str:
         """Meme will be generated here using image, text and author."""
         img = Image.open(in_path)
         # resizing the image
