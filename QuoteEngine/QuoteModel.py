@@ -4,5 +4,5 @@ class QuoteModel(object):
         self.author = author
 
     def __repr__(self):
-        return f"QuoteModel - '{self.body}' by {self.author}"
+        return f'{self.body} - {self.author}'
         

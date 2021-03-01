@@ -1,8 +1,8 @@
 from typing import List
+from time import time
 import os
 import subprocess
 
-from .TextIngestor import TextIngestor
 from .QuoteModel import QuoteModel
 from .IngestorInterface import IngestorInterface
 
@@ -14,11 +14,19 @@ class PDFIngestor(IngestorInterface):
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 
-        tmp = './pdf_ref.txt'
-        command = f"pdftotext {path} {tmp}"
+        tmp = f'./tmp/{int(time())}.txt'
+        subprocess.call(['pdftotext'], path, tmp)
+        
+        file_ref = open(tmp, 'r')
+        quotes = []
 
-        subprocess.call(command, shell=True, stderr=subprocess.STDOUT)
-        quotes = TextIngestor.parse(tmp)
+        for line in file_ref.readlines():
+            line = line.strip('\n\r').strip()
+            if len(line) > 0:
+                parse = line.split('-')
+                new_quote = QuoteModel(parse[0], parse[1])
+                quotes.append(new_quote)
 
+        file_ref.close()
         os.remove(tmp)
         return quotes
