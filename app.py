@@ -1,7 +1,7 @@
 import random
 import os
 import requests 
-from flask import Flask, render_template, abort, request
+from flask import Flask, render_template, abort, request, url_for
 
 from QuoteEngine import Ingestor, QuoteModel
 from MemeEngine import MemeEngine
@@ -20,13 +20,13 @@ def setup():
                    './_data/DogQuotes/DogQuotesCSV.csv']
 
     quotes = []
-    for q in quote_files:
-        quotes.extend(Ingestor.parse(q))
+    for f in quote_files:
+        quotes.extend(Ingestor.parse(f))
 
     images_path = "./_data/photos/dog/"
 
     imgs = []
-    for root, files in os.walk(images_path):
+    for root, dirs, files in os.walk(images_path):
         imgs = [os.path.join(root, name) for name in files]
 
     return quotes, imgs
@@ -54,18 +54,11 @@ def meme_form():
 def meme_post():
     """ Create a user defined meme """
 
-    # @TODO:
-    # 1. Use requests to save the image from the image_url
-    #    form param to a temp local file.
-    # 2. Use the meme object to generate a meme using this temp
-    #    file and the body and author form paramaters.
-    # 3. Remove the temporary saved image.
-    # getting the user input
     img_url = request.form['image_url']
     quote = QuoteModel(request.form['body'], request.form['author'])
 
     # saving the image temprarily
-    i = requests.get(img_url, allow_redirects=True)
+    i = requests.get(img_url)
     path_tmp = './tmp/image.png'
     with open(path_tmp, 'wb') as f:
         f.write(i.content)
