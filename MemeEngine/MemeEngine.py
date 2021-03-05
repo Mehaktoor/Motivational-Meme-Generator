@@ -3,7 +3,16 @@ from time import time
 from random import randrange
 import os
 
+# resizing and drawing text on the images.
 class MemeEngine:
+    """
+    Creating an image with a quote on top of it. 
+    in_path {str} -- file location of the input file
+    text {str} -- the quote which will be on the image
+    author {str} -- the author of the quote
+    width {int} -- the pixel width length of the image 
+    Return: str -- the file path to the output image
+    """
     def __init__(self, out_path):
         self.out_path = out_path
 
@@ -11,7 +20,15 @@ class MemeEngine:
             os.makedirs(out_path)
 
     def make_meme(self, in_path, text, author, width = 500) -> str:
-        """Meme will be generated here using image, text and author."""
+        """
+        Meme will be generated here using image, text and author.
+        Firstly, load the file. 
+        Resize the image to a maximum width of 500px and maintain the input aspect ratio.
+        Add the text quote to the image which contains the body and author at a random
+        location on the image. 
+        Save the image generated in the tmp directory. 
+        Return: The path of the generated image. 
+        """
         img = Image.open(in_path)
         # resizing the image
         w, h = img.size

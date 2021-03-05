@@ -1,3 +1,4 @@
+# encapsulating the sub-classes for the purpose of ingesting these file formats.
 from typing import List
 
 from .QuoteModel import QuoteModel
@@ -9,6 +10,9 @@ from .TextIngestor import TextIngestor
 from .PDFIngestor import PDFIngestor
 
 class Ingestor(IngestorInterface):
+    """
+    Convert the file formats in ingestors[] to a list of QuoteModel objects.
+    """
     ingestors = [DocxIngestor, CSVIngestor, TextIngestor, PDFIngestor]
 
     @classmethod

@@ -1,7 +1,8 @@
+# This will be used for running the app.
 import random
 import os
 import requests 
-from flask import Flask, render_template, abort, request, url_for
+from flask import Flask, render_template, abort, request
 
 from QuoteEngine import Ingestor, QuoteModel
 from MemeEngine import MemeEngine
@@ -53,11 +54,11 @@ def meme_form():
 @app.route('/create', methods=['POST'])
 def meme_post():
     """ Create a user defined meme """
-
+    # getting the user input.
     img_url = request.form['image_url']
     quote = QuoteModel(request.form['body'], request.form['author'])
 
-    # saving the image temprarily
+    # saving the image temprarily and generate a meme from it.
     i = requests.get(img_url)
     path_tmp = './tmp/image.png'
     with open(path_tmp, 'wb') as f:

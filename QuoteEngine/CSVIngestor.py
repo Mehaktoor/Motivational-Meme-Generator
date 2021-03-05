@@ -4,6 +4,7 @@ import pandas
 from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 
+# ingest CSV file format. Create list of QuoteModel objects. 
 class CSVIngestor(IngestorInterface):
     allowed_extensions = ['csv']
 
@@ -16,7 +17,7 @@ class CSVIngestor(IngestorInterface):
         df = pandas.read_csv(path, header = 0)
 
         for row in df.iterrows():
-            new_quote = QuoteModel(row['Body'], row['Author'])
-            quotes.append(new_quote)
+            quote, author = row
+            quotes.append(QuoteModel(quote, author))
 
         return quotes

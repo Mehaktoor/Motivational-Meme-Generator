@@ -1,9 +1,9 @@
 from typing import List
-import os
 
 from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 
+# ingest txt file format. Create list of QuoteModel objects.
 class TextIngestor(IngestorInterface):
     allowed_extensions = ['txt']
 

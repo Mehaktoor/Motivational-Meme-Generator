@@ -4,6 +4,7 @@ import docx
 from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 
+# ingest Docx file format. Create list of QuoteModel objects.
 class DocxIngestor(IngestorInterface):
     allowed_extensions = ['docx']
 
