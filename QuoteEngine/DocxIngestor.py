@@ -5,13 +5,15 @@ from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 
 # ingest Docx file format. Create list of QuoteModel objects.
+
+
 class DocxIngestor(IngestorInterface):
     allowed_extensions = ['docx']
 
     @classmethod
-    def parse(cls, path:str) -> List[QuoteModel]:
+    def parse(cls, path: str) -> List[QuoteModel]:
         if not cls.can_ingest(path):
-            raise Exception ('cannot ingest exception')
+            raise Exception('cannot ingest exception')
 
         quotes = []
         doc = docx.Document(path)

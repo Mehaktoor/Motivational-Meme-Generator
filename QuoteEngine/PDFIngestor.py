@@ -7,19 +7,20 @@ from .QuoteModel import QuoteModel
 from .IngestorInterface import IngestorInterface
 
 # ingest PDF file format. Create list of QuoteModel objects.
+
+
 class PDFIngestor(IngestorInterface):
     allowed_extensions = ['pdf']
 
     @classmethod
-    def parse(cls, path:str) -> List[QuoteModel]:
+    def parse(cls, path: str) -> List[QuoteModel]:
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
-        
+
         # CLI tool - pdftotext used to convert pdf format to txt format.
         tmp = f'./tmp/{int(time())}.txt'
-        #tmp = f'./tmp/test.txt'
         call = subprocess.call(['pdftotext', path, tmp])
-        
+
         with open(tmp, 'r') as f:
             quotes = []
 

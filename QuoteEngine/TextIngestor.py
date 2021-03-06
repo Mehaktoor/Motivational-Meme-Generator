@@ -4,11 +4,13 @@ from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 
 # ingest txt file format. Create list of QuoteModel objects.
+
+
 class TextIngestor(IngestorInterface):
     allowed_extensions = ['txt']
 
     @classmethod
-    def parse(cls, path:str) -> List[QuoteModel]:
+    def parse(cls, path: str) -> List[QuoteModel]:
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 

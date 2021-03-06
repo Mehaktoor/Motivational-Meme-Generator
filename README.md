@@ -21,6 +21,8 @@ Meme Generator is a multimedia application to dynamically generate memes, which 
 The app uses the `subprocess` module for the purpose of converting data from PDF to Txt format. Firstly, `pdftotext` needs to be installed on Mac or Windows. For this `xpdf` should be downloaded using [here](https://www.xpdfreader.com/pdftotext-man.html). For Mac, run `brew install pkg-config poppler python` and then `pip install pdftotext`
 
 ## Project Interface
+The project should be in the correct virtual environment before running it. Pass the command `source env/bin/activate`. This will activate the environment. 
+
 There are two ways of running this project:
 
 1. Running on the command line - `python3 meme.py`. For getting more information you 
@@ -51,7 +53,15 @@ There are two ways of running this project:
 
 2. Running the project in the app - `python3 app.py` and go to `the link`
 
-   Sample passing command 
+   ```bash
+   (env) (base) Mehaks-MacBook-Air:Motivational-Meme-Generator mehak$ python3 app.py
+   * Serving Flask app "app" (lazy loading)
+   * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+   * Debug mode: off
+   * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+   ```
 
    The app will use `QuoteEngine` module and `Meme Generator` module which will generate the meme with a random quote. It will use `requests` package to fetch an image which the user submits. 
 
@@ -63,6 +73,6 @@ The `QuoteEngine` module is responsible for ingesting various file types which c
 The `MemeEngine` module is responsible for the resizing, cropping and drawing text on the images for the memes. 
 
 
-* Dependencies can be installed by running **pip install -r requirements.txt**
+* Dependencies can be installed by running `pip install -r requirements.txt`
 * For the Web app - some default memes and images will be made. The user also has the option to create his/her own meme by specifying the image url, quote and author. Enjoy!!
-* For the CLI - the meme created will be stored in **static** directory. 
+* For the CLI - the meme created will be stored in `static` directory. 

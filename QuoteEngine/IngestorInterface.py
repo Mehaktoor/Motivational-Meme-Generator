@@ -4,6 +4,8 @@ from typing import List
 from .QuoteModel import QuoteModel
 
 # abstract base class for the ingestors parsing the files.
+
+
 class IngestorInterface(ABC):
     allowed_extensions = []
 
@@ -15,7 +17,6 @@ class IngestorInterface(ABC):
 
     @classmethod
     @abstractmethod
-    def parse(cls, path:str) -> List[QuoteModel]:
+    def parse(cls, path: str) -> List[QuoteModel]:
         # method implemented in the sub-classes
         pass
-    

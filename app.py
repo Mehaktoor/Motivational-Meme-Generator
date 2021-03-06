@@ -1,7 +1,7 @@
 # This will be used for running the app.
 import random
 import os
-import requests 
+import requests
 from flask import Flask, render_template, abort, request
 
 from QuoteEngine import Ingestor, QuoteModel
@@ -69,7 +69,7 @@ def meme_post():
 
     # remove the tmp file
     os.remove(path_tmp)
-    
+
     return render_template('meme.html', path=path)
 
 

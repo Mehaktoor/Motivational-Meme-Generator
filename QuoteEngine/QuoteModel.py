@@ -8,4 +8,3 @@ class QuoteModel(object):
 
     def __repr__(self):
         return f'{self.body} -- {self.author}'
-        
