@@ -35,7 +35,7 @@ class MemeEngine:
         img = Image.open(in_path)
         # resizing the image
         w, h = img.size
-        width = min(500, width)
+        width = max(500, width)
         r = width / w
         height = int(r * h)
         img = img.resize((width, height), Image.NEAREST)
@@ -47,7 +47,7 @@ class MemeEngine:
 
         # put the quote on 'random' position on the image
         row_text = randrange(30, height - 50)
-        draw.text((50, row_text), text, font=font, fill='white')
+        draw.text((50, row_text), str(text), font=font, fill='white')
         draw.text((50, row_text + 20), f'- {author}', font=font, fill='white')
 
         out_dir = os.path.join(self.out_path, f'tmp-{time()}.png')

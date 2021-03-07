@@ -13,11 +13,12 @@ def generate_meme(path=None, body=None, author=None):
         images = "./_data/photos/dog/"
         imgs = []
         for root, dirs, files in os.walk(images):
+            #print(root,dirs,files)
             imgs = [os.path.join(root, name) for name in files]
 
         img = random.choice(imgs)
     else:
-        img = path[0]
+        img = path
 
     if body is None:
         quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
@@ -45,4 +46,5 @@ if __name__ == "__main__":
     parser.add_argument('--body', type=str, help='Quote for the image')
     parser.add_argument('--author', type=str, help='Author of the quote')
     args = parser.parse_args()
+    #print(args)
     print(generate_meme(args.path, args.body, args.author))

@@ -59,18 +59,21 @@ def meme_post():
     quote = QuoteModel(request.form['body'], request.form['author'])
 
     # saving the image temprarily and generate a meme from it.
-    i = requests.get(img_url)
-    path_tmp = './tmp/image.png'
-    with open(path_tmp, 'wb') as f:
-        f.write(i.content)
+    try:
+        i = requests.get(img_url)
+        path_tmp = './tmp/image.png'
+        with open(path_tmp, 'wb') as f:
+            f.write(i.content)
 
-    # generating meme based on the input received from the user
-    path = meme.make_meme(path_tmp, quote.body, quote.author)
+        # generating meme based on the input received from the user
+        path = meme.make_meme(path_tmp, quote.body, quote.author)
 
-    # remove the tmp file
-    os.remove(path_tmp)
+        # remove the tmp file
+        os.remove(path_tmp)
 
-    return render_template('meme.html', path=path)
+        return render_template('meme.html', path=path)
+    except:
+        return render_template('custom_error.html')
 
 
 if __name__ == "__main__":
